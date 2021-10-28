@@ -1,0 +1,39 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="container-fluid">
+<table class="table table-hover table-striped">
+	<thead>
+	  <tr>
+	    <th scope="col">Student Name</th>
+	    <th scope="col">College Name</th>
+	    <th scope="col">Specialistion</th>
+	    <th scope="col">Degree Name</th>
+	    <th scope="col">Internship Applied for</th>
+	    <th scope="col">Phone No</th>
+	    <th scope="col">Email ID</th>
+	    <th scope="col">Location</th>
+	    <th scope="col">Gender</th>
+	    <th scope="col">Notes</th>
+	  </tr>
+	</thead>
+	{% if student_forms %}
+	<tbody>
+		{% for student_form in student_forms %}
+	  <tr>
+	    <th scope="row">{{ student_form.student_name }}</th>
+	    <td>{{ student_form.college_name }}</td>
+	    <td>{{ student_form.specialisation }}</td>
+	    <td>{{ student_form.degree_name }}</td>
+	    <td>{{ student_form.internship_applied }}</td>
+	    <td>{{ student_form.phone_no }}</td>
+	    <td>{{ student_form.email_id }}</td>
+	    <td>{{ student_form.location }}</td>
+	    <td>{{ student_form.gender }}</td>
+	    <td>{{ student_form.notes }}</td>
+	  </tr>
+	     {% endfor %}
+	</tbody>
+	{% endif %}
+</table>
+</div>
+{% endblock content %}

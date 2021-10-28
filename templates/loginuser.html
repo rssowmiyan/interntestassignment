@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <!-- BS5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <style>
+        body{background: linear-gradient(to right, #134e5e, #71b280);}
+    </style>
+</head>
+<body>
+<div class="d-flex align-items-center" style="height: 100vh;">
+
+    <div class="container" >
+
+        <div class="d-flex justify-content-center">
+
+            <div class="col-md-4">
+
+                <div class="card rounded-0 shadow">
+
+                    <div class="card-body">
+
+                        <h3>Login <img src="{% static 'login1.png' %}"></h3>
+                        
+
+                        <form action='{% url "loginuser" %}' method="POST">
+                                {% csrf_token %}
+
+                                <div class="form-group mb-2">
+                                    <label for="name">User Name: </label>
+                                    <input type="text" name='username' class="form-control"   id="name" placeholder="User name">
+                                </div>
+
+                                <div class="form-group mb-2">
+                                    <label for="password">Password: </label>
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+
+                        </form>
+                    <hr style="border-top: 1px solid;">
+                    <p class="text-center mt-2 text-muted">Need an account? <a style="text-decoration: none;" href="{% url 'signupuser' %}"><b class="text-dark">Sign Up here</b></a></p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+     <br><br>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+</body>
+</html>
